@@ -1,5 +1,6 @@
 import shelve
 #TODO: Import file with ValidatePassword()
+from ValidatePassword import ValidatePassword #line added by john 11/27 4:40PM
 #TODO: Import file with HashPassword()
 
 def CreateUser(username, password):
