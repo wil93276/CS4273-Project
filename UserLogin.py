@@ -1,5 +1,5 @@
 import shelve
-import hashlib
+import HashPassword
 
 def UserLogin(username,password):
 #Hashes input password
@@ -11,14 +11,12 @@ def UserLogin(username,password):
     password_input = input("Enter password: ");
     
     # hash the input password
-    pass = hash_password(password_input);
+    pass = HashPassword(password_input);
     
     with shelve.open('accountInfo') as db:
         # check that username is in the database
-        if username_input in db:
-            return True
         # check that password matches the one corresponding to the username in the database
-        if db[username.password] == pass;
+        if (username in db) and (db[username] == pass):
             return True
         else:
             return False
