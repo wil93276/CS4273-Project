@@ -16,7 +16,7 @@ def UserLogin(username,password):
     with shelve.open('accountInfo') as db:
         # check that username is in the database
         # check that password matches the one corresponding to the username in the database
-        if (username_input in db) and (db[username.password] == pass):
+        if (username in db) and (db[username] == pass):
             return True
         else:
             return False
