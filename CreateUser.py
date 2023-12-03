@@ -1,16 +1,16 @@
 import shelve
-#TODO: Import file with ValidatePassword()
 from ValidatePassword import ValidatePassword #line added by john 11/27 4:40PM
-#TODO: Import file with HashPassword()
+from HashPassword import HashPassword 
 
 def CreateUser(username, password):
     with shelve.open('accountInfo') as db:
         if username in db:
             return False
-        if not ValidatePassword(password): #TODO: Need ValidatePassword() implementation
+        if not ValidatePassword(password): 
             return False
-        db[username] = HashPassword(password) #TODO: Need HashPassword() implementation
+        db[username] = HashPassword(password)
         return True
+
 
 #Unit tests
 #Test that tries to create an account with a valid username and password
@@ -51,6 +51,19 @@ if __name__ == "__main__":
     CreateUserExisting()
     CreateUserBadPass()
     
+    
+    print(CreateUser("user1", "Password1"))
+
+    print(CreateUser("user2", "Password2"))
+    print(CreateUser("user3", "Password3"))
+
+
+    
+    with shelve.open('accountInfo') as db:
+        if "userName" in db:
+            del db["userName"]
+        if "userName2" in db:
+            del db["userName2"]
     #Delete the test users from the shelve file
     with shelve.open('accountInfo') as db:
         if "TESTUSER" in db:
@@ -61,4 +74,3 @@ if __name__ == "__main__":
             del db["TESTUSER3"]
         if "TESTUSER4" in db:
             del db["TESTUSER4"]
-

@@ -1,8 +1,9 @@
 import shelve
-from hashlib
+import hashlib
 # Using the hashlib library, using the sha256 algorithm to hash a given password
 sha256 = hashlib.sha256()
 # Return hashed password
 def HashPassword(password):
-    sha256.update(password)
+    hasher = hashlib.sha256()
+    hasher.update(password.encode()) #update method takes encoded data as argument
     return password
