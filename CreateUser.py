@@ -5,10 +5,13 @@ from HashPassword import HashPassword
 def CreateUser(username, password):
     with shelve.open('accountInfo') as db:
         if username in db:
+            db.close()
             return False
         if not ValidatePassword(password): 
+            db.close()
             return False
         db[username] = HashPassword(password)
+        db.close()
         return True
 
 
