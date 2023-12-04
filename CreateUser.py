@@ -54,19 +54,11 @@ if __name__ == "__main__":
     CreateUserExisting()
     CreateUserBadPass()
     
-    
+    #Test that it fails to create users in test shelve file
     print(CreateUser("user1", "Password1"))
-
     print(CreateUser("user2", "Password2"))
     print(CreateUser("user3", "Password3"))
 
-
-    
-    with shelve.open('accountInfo') as db:
-        if "userName" in db:
-            del db["userName"]
-        if "userName2" in db:
-            del db["userName2"]
     #Delete the test users from the shelve file
     with shelve.open('accountInfo') as db:
         if "TESTUSER" in db:
