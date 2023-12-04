@@ -7,6 +7,6 @@ def HashPassword(password):
     sha256.update(password.encode()) # Method takes encoded data as an argument
     return sha256.hexdigest() # returns a string object of double length that contains hexadecimal digits
  
-    if __name__ == '__main__':
-            print(HashPassword('test'))
+if __name__ == '__main__':
+     print(HashPassword('test'))
 
