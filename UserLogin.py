@@ -11,12 +11,12 @@ def UserLogin(username,password):
     password_input = input("Enter password: ");
     
     # hash the input password
-    pass = HashPassword(password_input);
+    passHash = HashPassword(password_input);
     
     with shelve.open('accountInfo') as db:
         # check that username is in the database
         # check that password matches the one corresponding to the username in the database
-        if (username in db) and (db[username] == pass):
+        if (username in db) and (db[username] == passHash):
             return True
         else:
             return False
